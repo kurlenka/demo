@@ -1,19 +1,2 @@
-<<<<<<< HEAD
 *.log
 env/
-=======
-*.test
-*.list
-*.pem
-*.pyc
-*.retry
-.*.swp
-/.vagrant
-env
-__pycache__
-.idea/*
-*.iml
-.project
-.vagrant
-
->>>>>>> 6870cd7462d711636c3ca888cb8d04d645befa91
