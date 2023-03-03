@@ -1,4 +1,4 @@
-name: Check remote host and push report
+name: Select remote host and push report
 
 on:
   workflow_dispatch:
