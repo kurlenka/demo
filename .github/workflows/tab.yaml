@@ -4,7 +4,9 @@ on:
     branches: 
     - master
 jobs:
+build:
       runs-on: ubuntu-latest
+      name: Test changed-files
       steps:
         - uses: actions/checkout@v3
           with:
