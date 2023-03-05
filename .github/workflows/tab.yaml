@@ -1,0 +1,23 @@
+name: Search tab from file
+on:
+  pull_request:
+    branches: 
+    - master
+jobs:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
+        - name: Get changed files
+          id: changed-files
+          uses: tj-actions/changed-files@v35      
+        - name: Search tab
+          run: |
+               for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+               cat "$file has `tr -cd '\t' | wc -c` tabs" >> report.log
+               done        
+        - name: Upload report
+          uses: actions/upload-artifact@v2
+          with:
+           path: report.log
