@@ -1,12 +1,10 @@
-name: Search tab from file
+name: Count tabs in changed files
 on:
   pull_request:
-    branches: 
-    - master
+    branches: [ "main" ]
 jobs:
-build:
+  my_action:
       runs-on: ubuntu-latest
-      name: Test changed-files
       steps:
         - uses: actions/checkout@v3
           with:
@@ -14,10 +12,10 @@ build:
         - name: Get changed files
           id: changed-files
           uses: tj-actions/changed-files@v35      
-        - name: Search tab
+        - name: Found tabs in the files
           run: |
                for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-               cat "$file has `tr -cd '\t' | wc -c` tabs" >> report.log
+               echo "The $file has `grep -P '\t' $file | wc -l` tabs" >> report.log
                done        
         - name: Upload report
           uses: actions/upload-artifact@v2
