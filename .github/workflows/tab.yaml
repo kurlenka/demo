@@ -1,8 +1,7 @@
 name: Check files and search tabs
 on:
         push:
-    branches:
-    - master
+                pull_request:
 jobs:
   Checkingfiles:
     runs-on: ubuntu-latest
