@@ -1,7 +1,8 @@
 name: Check files and search tabs
 on:
-        push:
-        pull_request:
+ push:
+  branches:
+  - zab
 jobs:
   Checkingfiles:
     runs-on: ubuntu-20.04
