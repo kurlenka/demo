@@ -15,15 +15,8 @@ jobs:
       - name: Install snmp
         run: sudo apt update && sudo apt install -y snmp snmp-mibs-downloader
       - run: echo "snmp has been installed"
-      - name: Modify snmp.conf
-        uses: jaywcjlove/github-action-modify-file-content@main
-        with:
-         path: /etc/snmp/snmp.conf
-         body: "overwrite file content {{#mibs}}"
-         openDelimiter: <# loading them by commenting out the following line.>
-         closeDelimiter: <# If you want to globally change where snmp libraries, commands and daemons>
-         overwrite: 'true'
       - run: |
+          sudo vi :4/^/#/      
           sudo cat /etc/snmp/snmp.conf > snmp_report.log 2>&1
           touch /tmp/file.log
           ls -la
