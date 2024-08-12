@@ -20,6 +20,9 @@ jobs:
           snmptranslate 1.3.6.1.2.1.1 > snmp_translate.log 2>&1
           touch /tmp/file.log
           ls -la
+      - name: Install Perl
+        run: apt-get install -y perl libxml-simple-perl libsnmp-perl
+      - run: echo "Perl has been installed))"
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
