@@ -16,7 +16,7 @@ jobs:
         run: sudo apt update && sudo apt install -y snmp snmp-mibs-downloader
       - run: echo "snmp has been installed"
       - run: |
-          sudo sed -i '/^mibs : $/s/^/#/' /etc/snmp/snmp.conf      
+          sudo sed -i '/^mibs /s/^/#/' /etc/snmp/snmp.conf      
           sudo cat /etc/snmp/snmp.conf > snmp_report.log 2>&1
           touch /tmp/file.log
           ls -la
