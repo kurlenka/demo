@@ -5,16 +5,22 @@ on:
     inputs:
       site_to_check:
         description: "Test to check"
-        required: true
+        required: false
         #default: 'onliner.by'
 jobs:
   prepare:
     #runs-on: [my_runner]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Install snmp
         run: sudo apt update && sudo apt install -y snmp snmp-mibs-downloader
       - run: echo "snmp has been installed"
+      - name: Modify snmp.conf
+        uses: jaywcjlove/github-action-modify-file-content@main
+        with:
+         path: /etc/snmp/snmp.conf
+         body: "overwrite file content {{#mibs}}"
+         overwrite: 'true'
       - run: |
           sudo cat /etc/snmp/snmp.conf > snmp_report.log 2>&1
           touch /tmp/file.log
