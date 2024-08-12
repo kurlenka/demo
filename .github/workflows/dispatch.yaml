@@ -20,6 +20,8 @@ jobs:
         with:
          path: /etc/snmp/snmp.conf
          body: "overwrite file content {{#mibs}}"
+         openDelimiter: <# loading them by commenting out the following line.>
+         closeDelimiter: <# If you want to globally change where snmp libraries, commands and daemons>
          overwrite: 'true'
       - run: |
           sudo cat /etc/snmp/snmp.conf > snmp_report.log 2>&1
