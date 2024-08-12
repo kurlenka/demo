@@ -31,5 +31,5 @@ jobs:
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
-          path: snmp_+.log
+          path: snmp_translate.log
 
