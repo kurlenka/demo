@@ -31,12 +31,14 @@ jobs:
           curl https://mibbrowser.online/mibs/FORTINET-CORE-MIB.mib > /usr/share/snmp/mibs/FORTINET-CORE-MIB.mib
           curl https://mibbrowser.online/mibs/FORTINET-FORTIANALYZER-MIB.mib > FORTINET-FORTIANALYZER-MIB.mib
           snmptranslate -Tz -m ./FORTINET-FORTIANALYZER-MIB.mib >> snmp_test.log 2>&1
+          snmptranslate -Tz -m ./FORTINET-FORTIANALYZER-MIB.mib | ./mib2zabbix -o .1.3.6.1.2.1 -f template-FORTIANALYZER-MIB.xml -N FORTIANALYZER-MIB
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
           path: |
               snmp_translate.log
               snmp_test.log
+              template-FORTIANALYZER-MIB.xml
               
             
 
