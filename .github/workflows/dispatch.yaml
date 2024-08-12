@@ -21,7 +21,7 @@ jobs:
           touch /tmp/file.log
           ls -la
       - name: Install Perl
-        run: apt-get install -y perl libxml-simple-perl libsnmp-perl
+        run: sudo apt-get install -y perl libxml-simple-perl libsnmp-perl
       - run: echo "Perl has been installed))"
       - name: Upload report
         uses: actions/upload-artifact@v4
