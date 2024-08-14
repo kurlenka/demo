@@ -31,7 +31,7 @@ jobs:
           curl https://raw.githubusercontent.com/kurlenka/demo/zab/FORTINET-CORE-MIB-build1517.mib > /usr/share/snmp/mibs/FORTINET-CORE-MIB.mib
           curl https://raw.githubusercontent.com/kurlenka/demo/zab/FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib > FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib
           snmptranslate -Tz -m ./FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib >> snmp_test.log 2>&1
-          snmptranslate -Tz -m ./FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib | ./mib2zabbix -o .1.3.6.1.2 -f TEMPLATE-FORTIMANAGER-FORTIANALYZER-MIB.xml -N FORTIMANAGER-FORTIANALYZER-MIB
+          snmptranslate -Tz -m ./FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib | ./mib2zabbix -o .1.3.6.1.4.1 -f TEMPLATE-FORTIMANAGER-FORTIANALYZER-MIB.xml -N FORTIMANAGER-FORTIANALYZER-MIB
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
