@@ -28,14 +28,14 @@ jobs:
           curl https://raw.githubusercontent.com/cavaliercoder/mib2zabbix/master/mib2zabbix.pl > mib2zabbix
           chmod a+x mib2zabbix
           ./mib2zabbix -h >> snmp_translate.log 2>&1
-          curl https://raw.githubusercontent.com/kurlenka/demo/zab/FORTINET-CORE-MIB-build1517.mib > /usr/share/snmp/mibs/FORTINET-CORE-MIB.mib
-          curl https://raw.githubusercontent.com/kurlenka/demo/zab/FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib > FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib
-          snmptranslate -Tz -m ./FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib >> snmp_test.log 2>&1
-          snmptranslate -Tz -m ./FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib | ./mib2zabbix -o .1.3.6.1.4.1 -f TEMPLATE-FORTIMANAGER-FORTIANALYZER-MIB.xml -N FORTIMANAGER-FORTIANALYZER-MIB
+          curl https://raw.githubusercontent.com/kurlenka/demo/zab/FORTINET-CORE-MIB.mib > /usr/share/snmp/mibs/FORTINET-CORE-MIB.mib
+          curl https://raw.githubusercontent.com/kurlenka/demo/zab/FORTINET-FORTIGATE-MIB.mib > FORTINET-FORTIMANAGER-FORTIANALYZER-MIB-build1574.mib
+          snmptranslate -Tz -m ./FORTINET-FORTIGATE-MIB.mib >> snmp_test.log 2>&1
+          snmptranslate -Tz -m ./FORTINET-FORTIGATE-MIB.mib | ./mib2zabbix -o .1.3.6.1.4.1 -f TEMPLATE-FORTINET-FORTIGATE-MIB.xml -N FORTINET-FORTIGATE-MIB
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
           path: |
               snmp_translate.log
               snmp_test.log
-              TEMPLATE-FORTIMANAGER-FORTIANALYZER-MIB.xml
+              TEMPLATE-FORTINET-FORTIGATE-MIB.xml
