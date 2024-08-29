@@ -12,7 +12,7 @@ jobs:
     #runs-on: [my_runner]
     runs-on: ubuntu-20.04
     steps:
-      - name: Install snmp
+      - name: Tamplate for 2200E 
         run: sudo apt update && sudo apt install -y snmp snmp-mibs-downloader
       - run: echo "snmp has been installed"
       - run: |
